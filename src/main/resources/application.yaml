@@ -13,7 +13,7 @@ spring:
         role: role-test
 
   config:
-    import: vault://
+    import: vault://kv/invntree-app
 
 server:
   port: 8888
