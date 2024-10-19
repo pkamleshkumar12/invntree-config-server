@@ -1,0 +1,3 @@
+[submodule "configs/config-repo"]
+	path = configs/config-repo
+	url = ./configs/config-repo
