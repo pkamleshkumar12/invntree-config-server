@@ -1,20 +1,6 @@
 spring:
   application:
     name: INVNTREE Config Server
-  cloud:
-    vault:
-      uri: http://vault.vault:8200
-      kv:
-        enabled: true
-        application-name: invntree-app
-        backend: kv
-      authentication: kubernetes
-      kubernetes:
-        role: role-test
-
-  config:
-    import: vault://kv/invntree-app
-
 server:
   port: 8888
 management:
