@@ -1,16 +1,30 @@
 spring:
   cloud:
     vault:
-      uri: http://127.0.0.1:8200
-      host: 127.0.0.1
-      port: 8200
-      authentication: token
+      scheme: http
+      authentication: TOKEN
       token: ${VAULT_TOKEN}
       kv:
-        application-name: invntree-app
         enabled: true
         backend: kv
+        application-name: invntree-app
+        profile-separator: '/'
+        profiles: vault
+      host: 127.0.0.1
+      port: 8200
+    config:
+      server:
+        vault:
+          scheme: http
+          host: 127.0.0.1
+          port: 8200
+          token: ${VAULT_TOKEN}
+          order: 0
+        git:
+          order: 1
+          uri: file:${user.dir}/configs/config-repo
+          default-label: master
+          force-pull: true
 
   config:
     import: vault://kv/invntree-app
-
