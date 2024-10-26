@@ -1,5 +1,11 @@
 spring:
   cloud:
+    config:
+      server:
+        git:
+          uri: file:${user.dir}/configs/config-repo
+          default-label: master
+          force-pull: true
     vault:
       scheme: http
       authentication: TOKEN
@@ -10,21 +16,6 @@ spring:
         application-name: invntree-app
         profile-separator: '/'
         profiles: vault
-      host: 127.0.0.1
-      port: 8200
-    config:
-      server:
-        vault:
-          scheme: http
-          host: 127.0.0.1
-          port: 8200
-          token: ${VAULT_TOKEN}
-          order: 0
-        git:
-          order: 1
-          uri: file:${user.dir}/configs/config-repo
-          default-label: master
-          force-pull: true
 
   config:
     import: vault://kv/invntree-app
